@@ -1,7 +1,6 @@
-// types.ts
 export enum Role {
   ADMIN = 'admin',
-  TUTOR = 'faculty', // ✅ Consistent with backend
+  TUTOR = 'faculty',
 }
 
 export enum Faculty {
@@ -32,12 +31,12 @@ export interface ExamSlot {
 }
 
 export interface CreateSlotData {
-  date: string;        // "2025-11-15"
+  date: string;
   type: ExamType;
-  startTime: string;   // "09:30"
-  endTime: string;     // "11:30"
+  startTime: string;
+  endTime: string;
   capacity: number;
-  credits: number;     // now supports 1.5, 2, etc.
+  credits: number;
 }
 
 export interface User {
@@ -69,7 +68,6 @@ export interface ExamSlot extends CreateSlotData {
   appliedFaculty: { id: number; name: string }[];
 }
 
-// BCC Assignment
 export interface BccAssignment {
   id: number;
   date: string;
@@ -87,10 +85,9 @@ export interface CreateBccAssignment {
   endTime: string;
   credits: number;
   proctorId: number;
-  examType: ExamType; // ✅ THIS WAS MISSING
+  examType: ExamType; 
 }
 
-// Add to types.ts
 export interface AssignBccData {
   examDate: string;
   startTime: string;

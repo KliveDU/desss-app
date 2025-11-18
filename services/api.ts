@@ -1,4 +1,3 @@
-// services/api.ts
 import {
   User,
   Role,
@@ -55,9 +54,7 @@ export const login = (username: string, password: string): Promise<{ token: stri
   });
 };
 
-// ========================
 // SLOT OPERATIONS
-// ========================
 export const getSlots = (): Promise<ExamSlot[]> => {
   return request<ExamSlot[]>('/slots');
 };
@@ -112,9 +109,7 @@ export const adminUnassignFromSlot = (slotId: number, facultyId: number): Promis
   });
 };
 
-// ========================
 // USER OPERATIONS
-// ========================
 export const getUsers = (): Promise<User[]> => {
   return request<User[]>('/users');
 };
