@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DESSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'custom-blue': {
+                'light': '#eef6ff',
+                'DEFAULT': '#3b82f6',
+                'dark': '#1d4ed8',
+                'darker': '#1e3a8a'
+              },
+              // Light mode
+              'surface-light': '#ffffff',
+              'bg-light': '#f8fafc',
+              'text-light': '#0f172a',
+              'input-light': '#f1f5f9',
+              'border-light': '#e2e8f0',
+              // Dark mode — improved for readability
+              'surface-dark': '#1e293b',
+              'bg-dark': '#0f172a',
+              'text-dark': '#f1f5f9',
+              'input-dark': '#334155',
+              'input-dark-hover': '#475569',
+              'border-dark': '#334155'
+            }
+          }
+        }
+      }
+    </script>
+    <script>
+      (function () {
+        const saved = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (systemPrefersDark ? 'dark' : 'light');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <style>
+      body {
+        background-color: #f8fafc;
+        color: #0f172a;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      .dark body {
+        background-color: #0f172a;
+        color: #f1f5f9;
+      }
+      /* Ensure inputs are readable */
+      input, select, textarea {
+        background-color: #f1f5f9;
+        color: #0f172a;
+        border-color: #e2e8f0;
+      }
+      .dark input,
+      .dark select,
+      .dark textarea {
+        background-color: #334155 !important;
+        color: #f1f5f9 !important;
+        border-color: #475569 !important;
+      }
+      .dark input::placeholder,
+      .dark textarea::placeholder {
+        color: #cbd5e1 !important;
+      }
+      /* Preserve existing overrides */
+      .bg-white {
+        background-color: #ffffff !important;
+      }
+      .dark .bg-white {
+        background-color: #1e293b !important;
+      }
+      .text-gray-700 {
+        color: #334155 !important;
+      }
+      .dark .text-gray-700 {
+        color: #cbd5e1 !important;
+      }
+      .border-gray-200 {
+        border-color: #e2e8f0 !important;
+      }
+      .dark .border-gray-200 {
+        border-color: #334155 !important;
+      }
+      .shadow {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+      }
+      .dark .shadow {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
+      }
+      .shadow-xl {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+      }
+      .dark .shadow-xl {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4) !important;
+      }
+      .fixed.inset-0.bg-black.bg-opacity-50 {
+        background-color: rgba(0, 0, 0, 0.6) !important;
+      }
+      .dark .fixed.inset-0.bg-black.bg-opacity-50 {
+        background-color: rgba(0, 0, 0, 0.7) !important;
+      }
+    </style>
+  </head>
+  <body class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
